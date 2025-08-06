@@ -1,0 +1,25 @@
+# ---- INPUTS ---- #
+
+# Either GEOMETRY OR GEOMETRY_FOLDER (mutually exclusive)
+#GEOMETRY_FOLDER = geometry # Folder containing geometry files in Selig format
+GEOMETRY = geometry/SC1095.dat # Geometry file in Selig format
+
+AOA_MIN = -4 # Min value for Angle of Attack input range (degrees)
+AOA_MAX = 20 # Max value for Angle of Attack input range (degrees)
+AOA_STEP = 0.25 # Sampling interval for Angle of Attack input range (degrees)
+
+MACH_MIN = 0.80 # Min value for Mach number input range
+MACH_MAX = 0.88 # Max value for Mach number input range
+MACH_STEP = 0.02 # Sampling interval for Mach number input range
+
+REYNOLDS_MIN = 4000000 # Min value for Reynolds number input range
+REYNOLDS_MAX = 4000000 # Min value for Reynolds number input range
+REYNOLDS_STEP = 250000 # Sampling interval for Reynolds number input range
+
+# ---- OUTPUTS ---- #
+
+CI_LEVEL = 0.95 # Confidence level (CI: 0 to 1, CI != 1) for output features (not available in c81 file format)
+
+OUTPUT_FILE = DD_80 # Output file name prefix
+OUTPUT_FOLDER = VALIDATION # Output folder name
+OUTPUT_FORMAT = csv # Format for output files
