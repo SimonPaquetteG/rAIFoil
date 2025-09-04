@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
     auto t0_all = Clock::now();
     auto t0_init = Clock::now();
 
-    // 1) Parse command-line options
+    // Parse command-line options
     po::options_description cmd_desc("Allowed options");
     cmd_desc.add_options()
         ("help,h", "Show detailed usage information")
@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
         std::cout << "Device: CPU\n";
     }
 
-    // 3) If it’s CUDA, query the GPU name via the CUDA runtime API
+    // If it’s CUDA, query the GPU name via the CUDA runtime API
     if (device.is_cuda()) {
         cudaDeviceProp prop;
         cudaError_t err = cudaGetDeviceProperties(&prop, device.index());
@@ -105,7 +105,7 @@ int main(int argc, char** argv) {
 
     std::cout << std::fixed << std::setprecision(2);
 
-    // 2) Parse config file
+    // Parse config file
     po::options_description cfg_desc("Config file options");
     cfg_desc.add_options()
         ("OUTPUT_FILE",      po::value<std::string>()->required(), "Output filename prefix without extension")
@@ -189,7 +189,7 @@ int main(int argc, char** argv) {
     }
     auto t1_init = Clock::now();
 
-    // ── Progress bar setup ────────────────────────────────────────────────────
+    // Progress bar setup
     size_t num_aoa  = static_cast<size_t>(std::floor((aoa_max - aoa_min)/aoa_step + 1 + 1e-8));
     size_t num_mach = static_cast<size_t>(std::floor((mach_max - mach_min)/mach_step + 1 + 1e-8));
     size_t num_re   = static_cast<size_t>(std::floor((re_max   - re_min)  /re_step  + 1 + 1e-8));
@@ -336,11 +336,10 @@ int main(int argc, char** argv) {
         }
         total_write_ms += std::chrono::duration<double, std::milli>(Clock::now() - t0_write).count();
 
-        // ── update progress ─────────────────────────────────────────────────────
+        // update progress
         done_preds += preds_per_geom;
         print_progress(done_preds);
         if (done_preds == total_preds) std::cout << std::endl;
-        // ─────────────────────────────────────────────────────────────────────────
     }
 
     std::cout << " \n";
@@ -362,3 +361,4 @@ int main(int argc, char** argv) {
     }
     return 0;
 }
+
